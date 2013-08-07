@@ -8,3 +8,7 @@ extract all data to your tera web directory...
 
 tera-database.sql includes SQL tables
 import to your gameserver database "tera"
+
+
+TeraLauncher.rar
+includes Launcher & image files
