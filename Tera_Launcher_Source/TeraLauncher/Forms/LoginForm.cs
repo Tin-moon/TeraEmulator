@@ -14,7 +14,6 @@ using System.IO;  //file io
 using System.Net; //http request
 using System.Reflection; //bindings prop control
 
-
 namespace TeraLauncher
 {
     public partial class LoginForm : Form
@@ -23,7 +22,7 @@ namespace TeraLauncher
 
         public static string currentDir = Environment.CurrentDirectory + "\\";
         public static string dataDir = currentDir + "cTeraData\\";
-        public static string ConfigFile = currentDir + "cTeraLauncher.ini";
+        public static string configFile = currentDir + "cTeraLauncher.ini";
         //
         public static string _title_txt { get; set; }
         public static string _launcher_background_img { get; set; }
@@ -219,7 +218,7 @@ namespace TeraLauncher
                 languageGame = "de";
             }
 
-            IniReader.WriteValue("Launcher", "languageGame", languageGame, ConfigFile);
+            IniReader.WriteValue("Launcher", "languageGame", languageGame, configFile);
         }
         
         #endregion Button Controls
@@ -263,18 +262,13 @@ namespace TeraLauncher
             if (isLoggedIn)
             {                
                 //params
-                //string LaunchString = "";
-                //dreams string rev.1008
                 string LaunchString = " 1 " + master_account_password + " 1 0 " + master_account_name + " " + languageGame;
 
-                //old string rev.1725
-                //LaunchString = " 1 " + master_account_password + " 0" + " 1" + " " + master_account_name + languageGame;
-
-                ProcessStartInfo Tera = new ProcessStartInfo();
-                //exe params
-                Tera.FileName = "tera-game.exe";
-                Tera.Arguments = LaunchString;
-                Process.Start(Tera);
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = "tera-game.exe",
+                    Arguments = LaunchString
+                });
 
                 //close launcher
                 Thread.Sleep(250);
@@ -287,10 +281,10 @@ namespace TeraLauncher
         //config check on start
         public void checkconfig()
         {
-            if (!File.Exists(ConfigFile))
+            if (!File.Exists(configFile))
             {
                 //empty config file on start
-                File.Create(ConfigFile);
+                File.Create(configFile);
                 Application.Restart();
             }
             else
@@ -330,7 +324,6 @@ namespace TeraLauncher
 
                 // Set Graphics to Gui
                 setimages();
-
             }
         }
         //images set on start
@@ -426,6 +419,5 @@ namespace TeraLauncher
             }
         }
         #endregion GUIoverride
-
     }
 }

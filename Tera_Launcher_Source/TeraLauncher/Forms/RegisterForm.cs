@@ -49,6 +49,9 @@ namespace TeraLauncher
         //registration undone yet! to be rebuild
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Registration Form not done!\nplease run Webserver and register with\nhttp://127.0.0.1/register ") ;
+
+            System.Diagnostics.Process.Start("http://127.0.0.1/register");
 
             /*
             Form1.user = WebAPI._register_Callback<UserData>(Form1.webApiUrl, tbUsername.Text, tbPassword.Text, 
