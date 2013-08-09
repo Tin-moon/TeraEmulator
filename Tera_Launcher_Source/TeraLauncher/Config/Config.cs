@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeraLauncher;
-
 
 namespace TeraLauncher
 {
@@ -61,7 +59,6 @@ namespace TeraLauncher
             }
             catch (Exception /*ex*/)
             {
-                //new Logger(LogMsg.MSG_ERROR, "Config: registerBackground not found!");
             }
             return _backgroundRegister;
         }
